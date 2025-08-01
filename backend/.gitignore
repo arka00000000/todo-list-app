@@ -1,0 +1,11 @@
+// src/api.js
+import axios from "axios";
+
+const API = axios.create({
+  baseURL: "http://localhost:5000", // Change if hosted elsewhere
+});
+
+export const getTasks = (params) => API.get("/tasks", { params });
+export const createTask = (data) => API.post("/tasks", data);
+export const updateTask = (id, data) => API.patch(`/tasks/${id}`, data);
+export const deleteTask = (id) => API.delete(`/tasks/${id}`);

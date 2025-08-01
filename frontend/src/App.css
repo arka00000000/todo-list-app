@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff;
+  margin-top: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-row input,
+.input-row select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-row button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.input-row button:hover {
+  background-color: #45a049;
+}
+
+.card {
+  background: #f9f9f9;
+  border-left: 4px solid #4caf50;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.card button {
+  margin-right: 10px;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  cursor: pointer;
+}
+
+.card button:hover {
+  opacity: 0.8;
+}
