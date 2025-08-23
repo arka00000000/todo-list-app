@@ -29,8 +29,8 @@ This is a full-stack To-Do List app built with:
 - **Database**: MongoDB (Atlas)
 
 ### 🔗 Live Demo
-Hosted on Netlify: [Netlify Link Here](https://your-netlify-site.netlify.app)
-
+# Hosted on Netlify: https://majestic-llama-8bec42.netlify.app/
+# Hosted on Netlify:    https://delicate-sorbet-b98987.netlify.app/
 ### 🔗 GitHub Repo
 [GitHub Repository](https://github.com/arka00000000/todo-list)
 

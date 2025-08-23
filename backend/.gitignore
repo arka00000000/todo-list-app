@@ -1,11 +1,24 @@
-// src/api.js
-import axios from "axios";
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-const API = axios.create({
-  baseURL: "http://localhost:5000", // Change if hosted elsewhere
-});
+node_modules
+dist
+dist-ssr
+*.local
 
-export const getTasks = (params) => API.get("/tasks", { params });
-export const createTask = (data) => API.post("/tasks", data);
-export const updateTask = (id, data) => API.patch(`/tasks/${id}`, data);
-export const deleteTask = (id) => API.delete(`/tasks/${id}`);
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
