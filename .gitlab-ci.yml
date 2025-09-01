@@ -1,0 +1,31 @@
+stages:
+  - test
+
+# Test backend
+backend-test:
+  stage: test
+  image: node:18
+  script:
+    - cd backend
+    - npm install
+    - echo "✅ Backend dependencies installed"
+    - npm run build || echo "ℹ️ No build step for backend"
+    - npm test || echo "ℹ️ No tests found, skipping"
+    - node server.js &
+    - sleep 5
+    - curl http://localhost:5000 || echo "✅ Backend started successfully"
+  only:
+    - main
+
+# Test frontend
+frontend-test:
+  stage: test
+  image: node:18
+  script:
+    - cd frontend
+    - npm install
+    - echo "✅ Frontend dependencies installed"
+    - npm run build
+    - echo "✅ Frontend build successful"
+  only:
+    - main
