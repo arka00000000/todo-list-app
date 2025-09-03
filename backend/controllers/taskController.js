@@ -2,7 +2,7 @@ const Task = require("../models/taskModel");
 
 exports.getTasks = async (req, res) => {
   try {
-    const { search, status, minFees, maxFees, sortBy, sortOrder } = req.query;
+    const { search, status, sortBy, sortOrder } = req.query;
 
     const filter = {};
 
@@ -14,12 +14,7 @@ exports.getTasks = async (req, res) => {
       filter.status = status;
     }
 
-    if (minFees || maxFees) {
-      filter.fees = {};
-      if (minFees) filter.fees.$gte = Number(minFees);
-      if (maxFees) filter.fees.$lte = Number(maxFees);
-    }
-
+   
     const tasks = await Task.find(filter).sort({
       [sortBy || "createdAt"]: sortOrder === "asc" ? 1 : -1
     });
@@ -41,7 +36,7 @@ exports.createTask = async (req, res) => {
       return res.status(400).json({ message: "Title is required" });
     }
 
-    const task = await Task.create({ title, description, fees, status });
+    const task = await Task.create({ title, description, status });
     res.status(201).json(task);
   } catch (err) {
     res.status(500).json({ message: "Error creating task", error: err.message });
@@ -67,7 +62,7 @@ exports.updateTask = async (req, res) => {
   try {
     const { title, description, status, fees } = req.body;
 
-    if (!title && !description && !status && fees === undefined) {
+    if (!title && !description && !status  === undefined) {
       return res.status(400).json({ message: "Nothing to update" });
     }
 
@@ -81,12 +76,7 @@ exports.updateTask = async (req, res) => {
       }
       updates.status = status;
     }
-    if (fees !== undefined) {
-      if (isNaN(fees)) {
-        return res.status(400).json({ message: "Fees must be a number" });
-      }
-      updates.fees = fees;
-    }
+   
 
     const task = await Task.findByIdAndUpdate(req.params.id, updates, {
       new: true,
